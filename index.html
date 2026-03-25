@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhagyesh Jogani — E-Mobility Engineer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --teal-dark: #0F6E56;
+    --teal-xdark: #085041;
+    --amber: #EF9F27;
+    --amber-light: #FAEEDA;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --blue: #378ADD;
+    --blue-light: #E6F1FB;
+    --gray-bg: #F7F6F2;
+    --gray-dark: #2C2C2A;
+    --gray-mid: #5F5E5A;
+    --gray-light: #D3D1C7;
+    --white: #FFFFFF;
+    --font-display: 'Space Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-bg);
+    color: var(--gray-dark);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(247,246,242,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gray-light);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--teal-dark);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--gray-mid);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 5rem 2rem 4rem;
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 99px;
+    margin-bottom: 1.25rem;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.3); }
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--gray-dark);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 span { color: var(--teal); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--gray-mid);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .tag {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    color: var(--gray-dark);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 99px;
+  }
+  .tag.accent { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-outline {
+    background: transparent;
+    color: var(--gray-dark);
+    border: 1px solid var(--gray-light);
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gray-mid); }
+
+  /* AVATAR */
+  .avatar-wrap {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--white);
+    flex-shrink: 0;
+    border: 3px solid var(--teal-light);
+    box-shadow: 0 0 0 6px var(--white), 0 0 0 8px var(--teal-light);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--white);
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat {
+    text-align: center;
+    flex: 1;
+    max-width: 200px;
+    padding: 0 1.5rem;
+    border-right: 1px solid var(--gray-light);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--teal);
+    display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--gray-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 1.5rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-light);
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--gray-light);
+  }
+  .timeline-item {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 4px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--gray-bg);
+    z-index: 1;
+  }
+  .timeline-dot.gray { background: var(--gray-mid); }
+  .timeline-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .timeline-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(29,158,117,0.08); }
+  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+  .timeline-role { font-size: 15px; font-weight: 600; color: var(--gray-dark); }
+  .timeline-company { font-size: 13px; color: var(--teal-dark); font-weight: 600; }
+  .timeline-period {
+    font-size: 11px;
+    color: var(--gray-mid);
+    background: var(--gray-bg);
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .timeline-bullets { margin-top: 10px; }
+  .timeline-bullets li {
+    font-size: 13px;
+    color: var(--gray-mid);
+    margin-bottom: 5px;
+    padding-left: 14px;
+    position: relative;
+    list-style: none;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 11px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .skill-card:hover { border-color: var(--teal); }
+  .skill-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .skill-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 8px;
+  }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+  .skill-pill {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: var(--gray-bg);
+    color: var(--gray-mid);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .project-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .project-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: 4px;
+  }
+  .project-tag.v2x { background: var(--teal-light); color: var(--teal-dark); }
+  .project-tag.ai { background: var(--blue-light); color: #0C447C; }
+  .project-tag.ev { background: var(--amber-light); color: #633806; }
+  .project-tag.eng { background: var(--coral-light); color: #712B13; }
+  .project-card h3 { font-size: 15px; font-weight: 600; color: var(--gray-dark); }
+  .project-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; flex: 1; }
+  .project-tools { display: flex; flex-wrap: wrap; gap: 4px; }
+  .project-tool {
+    font-size: 10px;
+    font-family: var(--font-display);
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--gray-bg);
+    color: var(--gray-mid);
+    border: 1px solid var(--gray-light);
+  }
+
+  /* PUBLICATION */
+  .pub-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-left: 4px solid var(--teal);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .pub-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal-dark);
+    background: var(--teal-light);
+    padding: 3px 10px; border-radius: 99px;
+    margin-bottom: 10px;
+  }
+  .pub-card h3 { font-size: 15px; font-weight: 600; color: var(--gray-dark); margin-bottom: 6px; }
+  .pub-card p { font-size: 13px; color: var(--gray-mid); }
+  .pub-venue { font-size: 12px; color: var(--teal-dark); font-weight: 600; margin-top: 6px; }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+    color: var(--gray-dark);
+    transition: border-color 0.2s;
+  }
+  .contact-card:hover { border-color: var(--teal); }
+  .contact-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+  .contact-label { font-size: 11px; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-val { font-size: 13px; font-weight: 600; color: var(--gray-dark); }
+
+  /* FULL-WIDTH SECTIONS */
+  .full-width-section {
+    background: var(--white);
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    padding: 3rem 0;
+  }
+  .full-width-section .section {
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-dark);
+    color: var(--gray-light);
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+  footer span { color: var(--teal); }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .avatar-wrap { display: none; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { border-right: none; border-bottom: 1px solid var(--gray-light); max-width: 100%; }
+    .stat:last-child { border-bottom: none; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BJ_</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">Available for hire · Stuttgart, Germany</div>
+    <h1>Bhagyesh<br><span>Jogani</span></h1>
+    <p class="hero-sub">E-Mobility Engineer · V2X & EV Charging · AI & Energy Management</p>
+    <div class="hero-tags">
+      <span class="tag accent">V2X / V2G / V2H</span>
+      <span class="tag accent">OCPP 1.6 / 2.0.1</span>
+      <span class="tag accent">ISO 15118-20</span>
+      <span class="tag">Python · MATLAB</span>
+      <span class="tag">ML Optimisation</span>
+      <span class="tag">Published Researcher</span>
+      <span class="tag">Visa Ready</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="mailto:bhagyeshjogani07@gmail.com" class="btn-primary">✉ Get in touch</a>
+      <a href="https://linkedin.com/in/bhagyeshjogani" target="_blank" class="btn-outline">LinkedIn ↗</a>
+      <a href="https://github.com/bhagyesh-7" target="_blank" class="btn-outline">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="avatar-wrap">BJ</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">1.5+</span>
+    <span class="stat-label">Years at Bosch</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2</span>
+    <span class="stat-label">Publications</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">M.Sc.</span>
+    <span class="stat-label">Electromobility ACES · FAU</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">Top 3%</span>
+    <span class="stat-label">Bronze Medal · B.E.</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">5+</span>
+    <span class="stat-label">Key Projects</span>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-label">01 — Work history</div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Master Thesis — V2X Energy Management</div>
+            <div class="timeline-company">Robert Bosch GmbH</div>
+          </div>
+          <span class="timeline-period">Apr – Oct 2025 · Stuttgart</span>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Designed & validated MATLAB/Simulink V2X models (V2G, V2H) with battery ageing/degradation integration</li>
+          <li>Built Python multi-objective optimisation algorithms balancing energy cost, solar PV, efficiency & battery health</li>
+          <li>Developed data-driven solar PV & household simulation framework from real-world datasets</li>
+          <li>Contributed to V2X energy management system maximising self-consumption & grid flexibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Test Automation Engineer (Intern)</div>
+            <div class="timeline-company">Robert Bosch GmbH</div>
+          </div>
+          <span class="timeline-period">Jul 2024 – Jan 2025 · Stuttgart</span>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Automated end-to-end SAP S/4HANA workflows using Worksoft Certify, reducing manual validation effort</li>
+          <li>Created regression test suites for FICO & Asset Management modules; early defect detection in VM environments</li>
+          <li>Delivered full traceability reports supporting compliance & enterprise go-live validation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot gray"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Automotive Engineer</div>
+            <div class="timeline-company">Kataria Automobile Pvt Ltd</div>
+          </div>
+          <span class="timeline-period">May – Sep 2022 · Surat, India</span>
+        </div>
+        <ul class="timeline-bullets">
+          <li>Diagnostics & fault isolation across mechanical, electrical & HVAC subsystems</li>
+          <li>Preventive maintenance & specialised repairs improving vehicle reliability & customer satisfaction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="full-width-section" id="skills">
+  <div class="section">
+    <div class="section-label">02 — Technical skills</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--teal-light);">⚡</div>
+        <h4>EV Protocols</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">OCPP 1.6</span><span class="skill-pill">OCPP 2.0.1</span>
+          <span class="skill-pill">ISO 15118-20</span><span class="skill-pill">CAN</span>
+          <span class="skill-pill">MQTT</span><span class="skill-pill">Modbus</span><span class="skill-pill">TCP/IP</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--blue-light);">🐍</div>
+        <h4>Programming</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span><span class="skill-pill">MATLAB</span>
+          <span class="skill-pill">C / C++</span><span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--amber-light);">🔧</div>
+        <h4>Simulation & CAD</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">Simulink</span><span class="skill-pill">AutoCAD</span>
+          <span class="skill-pill">Fusion 360</span><span class="skill-pill">SolidWorks</span><span class="skill-pill">CATIA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--coral-light);">🤖</div>
+        <h4>AI & Data Science</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">Machine Learning</span><span class="skill-pill">Multi-obj. Optim.</span>
+          <span class="skill-pill">RAG Pipelines</span><span class="skill-pill">OpenAI API</span><span class="skill-pill">NLP</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--teal-light);">🛠</div>
+        <h4>Tools & Platforms</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">SAP S/4HANA</span><span class="skill-pill">Git</span>
+          <span class="skill-pill">Power BI</span><span class="skill-pill">VS Code</span><span class="skill-pill">Worksoft Certify</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon" style="background: var(--blue-light);">📋</div>
+        <h4>Quality & Process</h4>
+        <div class="skill-pills">
+          <span class="skill-pill">ISO 9001</span><span class="skill-pill">Six Sigma</span>
+          <span class="skill-pill">FMEA</span><span class="skill-pill">Scrum / Agile</span>
+          <span class="skill-pill">CI/CD</span><span class="skill-pill">Lean / Kaizen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-label">03 — Key projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-tag v2x">V2X / Energy</span>
+      <h3>V2X Energy Management System</h3>
+      <p>End-to-end MATLAB/Simulink model for V2G & V2H with battery ageing models, solar PV integration & Python multi-objective optimisation for cost vs. battery health tradeoffs.</p>
+      <div class="project-tools">
+        <span class="project-tool">MATLAB/Simulink</span><span class="project-tool">Python</span>
+        <span class="project-tool">ML Optimisation</span><span class="project-tool">Solar PV</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag ai">AI / NLP</span>
+      <h3>Data Cleaning Pipeline for LLM Training</h3>
+      <p>Multilingual Python preprocessing pipeline extracting, cleaning & structuring PDFs for LLM training data. Includes RAG pipeline optimisation integrating OpenAI models to reduce hallucinations.</p>
+      <div class="project-tools">
+        <span class="project-tool">Python</span><span class="project-tool">NLP</span>
+        <span class="project-tool">RAG</span><span class="project-tool">OpenAI API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag ev">Solar / EV</span>
+      <h3>Solar PV Energy Calculator & Household Simulation</h3>
+      <p>Data-driven solar energy calculator using real-world irradiance datasets to simulate production/consumption patterns and optimise prosumer self-consumption and grid interaction.</p>
+      <div class="project-tools">
+        <span class="project-tool">Python</span><span class="project-tool">Data Analysis</span>
+        <span class="project-tool">Energy Modelling</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag eng">Engineering</span>
+      <h3>Glide Engine — Electronic Valve Actuation</h3>
+      <p>C/C++ prototype replacing camshaft-driven mechanical valves with Arduino-controlled electric actuators, achieving faster, programmable valve timing with measurable efficiency improvements.</p>
+      <div class="project-tools">
+        <span class="project-tool">C / C++</span><span class="project-tool">Arduino</span>
+        <span class="project-tool">Embedded Systems</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag v2x">Test Automation</span>
+      <h3>SAP S/4HANA End-to-End Test Automation</h3>
+      <p>Automated regression test suite for Finance & Controlling (FICO) and Asset Management modules using Worksoft Certify, significantly reducing manual QA effort and supporting enterprise go-live.</p>
+      <div class="project-tools">
+        <span class="project-tool">Worksoft Certify</span><span class="project-tool">SAP S/4HANA</span>
+        <span class="project-tool">CI/CD</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<div class="full-width-section" id="publications">
+  <div class="section">
+    <div class="section-label">04 — Research & publications</div>
+    <div class="pub-card">
+      <span class="pub-badge">⭐ In press · 2026</span>
+      <h3>Integrated V2X: Energy Management for Enhanced Household Self-Consumption and Grid Flexibility</h3>
+      <p>Peer-reviewed paper on a residential PV-based energy management system with bidirectional EV smart charging — focusing on maximising PV self-consumption and minimising household energy costs under dynamic grid conditions.</p>
+      <div class="pub-venue">CIRED 2026 Brussels Workshop</div>
+    </div>
+    <div class="pub-card" style="border-left-color: var(--gray-mid);">
+      <span class="pub-badge" style="background: var(--gray-bg); color: var(--gray-mid);">Published · 2020</span>
+      <h3>Bio-Electric System</h3>
+      <p>Proposed a sustainable energy system capturing biogas from bio-waste decomposition, converted via a Seebeck generator to charge electric vehicles — demonstrating integration of renewable energy and sustainable transport.</p>
+      <div class="pub-venue" style="color: var(--gray-mid);">International Journal of Advances in Engineering and Management (IJAEM)</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-label">05 — Get in touch</div>
+  <p style="font-size: 15px; color: var(--gray-mid); margin-bottom: 1.5rem;">Open to full-time roles in E-Mobility, EV Charging, and Energy Management across Germany & Europe. Visa sponsorship available.</p>
+  <div class="contact-grid">
+    <a href="mailto:bhagyeshjogani07@gmail.com" class="contact-card">
+      <div class="contact-icon">✉</div>
+      <div><div class="contact-label">Email</div><div class="contact-val">bhagyeshjogani07@gmail.com</div></div>
+    </a>
+    <a href="https://linkedin.com/in/bhagyeshjogani" target="_blank" class="contact-card">
+      <div class="contact-icon" style="font-weight:700; font-size:14px;">in</div>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-val">bhagyeshjogani</div></div>
+    </a>
+    <a href="https://github.com/bhagyesh-7" target="_blank" class="contact-card">
+      <div class="contact-icon" style="font-family: monospace; font-size: 14px;">&lt;/&gt;</div>
+      <div><div class="contact-label">GitHub</div><div class="contact-val">bhagyesh-7</div></div>
+    </a>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div><div class="contact-label">Location</div><div class="contact-val">Stuttgart, Germany</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Bhagyesh Jogani</span> · E-Mobility Engineer · Stuttgart, Germany · 2026
+</footer>
+
+</body>
+</html>
